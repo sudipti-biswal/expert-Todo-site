@@ -53,12 +53,18 @@ const addItem =()=>{
  
 }
 
+const handleKeyPress = (event) => {
+  if(event.key === 'Enter'){
+    addItem();
+  }
+}
+
 //Delete todos button onclick here
 
 const deleteItem =(index)=>{
  
 const updateditems = items.filter((elem)=>{
-  return index != elem.id;
+  return index !== elem.id;
 });
 setItems(updateditems);
 }
@@ -114,6 +120,7 @@ localStorage.setItem("lastname", "Smith");
            title="Add Todo" 
            value={inputData}
            onChange={(e)=>setInputData(e.target.value)}
+           onKeyPress={handleKeyPress}
            />
            {toggleSubmit ?
            <TiPlus className=" plus-btn" onClick={addItem}/> :
